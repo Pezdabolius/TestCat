@@ -1,0 +1,25 @@
+version: '3.9'
+
+services:
+  django:
+    build: .
+    container_name: django
+    ports:
+      - '8000:8000'
+    restart: always
+    env_file:
+      - .env
+    depends_on:
+      - db_test
+    command: >
+      sh -c 'python manage.py migrate 
+      && python manage.py loaddata db.json 
+      && python manage.py runserver 0.0.0.0:8000'
+
+  db_test:
+    image: postgres:latest
+    container_name: db
+    ports:
+      - '5432:5432'
+    env_file:
+      - .env
