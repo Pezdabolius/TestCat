@@ -1,13 +1,15 @@
-Quickstart
+## Quickstart for pycharm
 
-git clone https://github.com/Pezdabolius/TestCat.git
+Запуск через Docker:
 
-python -m venv my_venv
-my_venv\Scripts\activate
-pip install -r requirements.txt
+    git clone https://github.com/Pezdabolius/TestCat.git
+    cd TestCat 
+    docker compose up --build
+    docker compose exec django pytest cat/tests.py --ds=core.settings
+    
+## На сайт
+Переходим по адресу http://localhost:8000/
 
-docker compose up
+swagger: http://localhost:8000/api/swagger/
 
-Start pytest:
-
- pytest cat/tests.py --ds=core.settings     
+django-admin: http://localhost:8000/admin/ (username=admin, password=defender)
