@@ -55,8 +55,8 @@ def test_post_list_kittens(client, user):
 def test_list_breeds(client, kittens):
     response = client.get(reverse('list_breed'))
     assert response.status_code == 200
-    assert response.data['breeds'] == ['bengal', 'persian']
-    assert response.data['breeds'][0] == 'bengal'
+    assert response.data['breeds'] == ['persian', 'bengal']
+    assert response.data['breeds'][0] == 'persian'
 
 
 @pytest.mark.django_db
